@@ -1,0 +1,1 @@
+# dotnet-hashalgorithm-parallel-tester
