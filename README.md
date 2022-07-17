@@ -1,1 +1,3 @@
-# dotnet-hashalgorithm-parallel-tester
+# Hash Algorithm Paralel Tester 
+
+Pretty much does what it says.
