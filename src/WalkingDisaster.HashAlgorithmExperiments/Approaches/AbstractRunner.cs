@@ -38,11 +38,15 @@ internal abstract class AbstractRunner : ITestRun
             var totalErrors = 0;
             Parallel.ForEach(range, options, (i) =>
             {
-                var theString = Guid.NewGuid().ToString("D");
+                var theString = "The quick brown fox jumps over the lazy dog" + i;
                 var bytes = Encoding.UTF8.GetBytes(theString);
                 try
                 {
-                    Run(bytes);
+                    var result = Run(bytes);
+                    if (result.Length == 0)
+                    {
+                        throw new InvalidOperationException("Didn't hash");
+                    }
                 }
                 catch (TaskCanceledException)
                 {

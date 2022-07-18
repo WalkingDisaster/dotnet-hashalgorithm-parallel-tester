@@ -14,4 +14,5 @@ internal class ThreadStaticInstance : AbstractRunner
         _hasher ??= SHA1.Create();
         return _hasher.ComputeHash(input);
     }
+
 }

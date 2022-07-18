@@ -9,6 +9,7 @@ internal class TransientInstance : AbstractRunner
 
     protected override byte[] Run(byte[] input)
     {
-        return SHA1.Create().ComputeHash(input);
+        using var algorithm = SHA1.Create();
+        return algorithm.ComputeHash(input);
     }
 }

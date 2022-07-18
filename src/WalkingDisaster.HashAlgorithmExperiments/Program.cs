@@ -1,11 +1,13 @@
 ﻿using System.Collections.Concurrent;
 using System.Diagnostics;
+using System.Security.Cryptography;
+using System.Text;
 using WalkingDisaster.HashAlgorithmExperiments;
 using WalkingDisaster.HashAlgorithmExperiments.Approaches;
 
-const int totalIterations = 10000000;
+const int totalIterations = 100000000;
 const int degreeOfParallelism = 10;
-const int checkpoint = 1000;
+const int checkpoint = 10000;
 
 var runs = new ITestRun[]
 {
@@ -53,13 +55,23 @@ foreach (var run in runs)
             Console.SetCursorPosition(2, currentRow);
             Console.Write(message);
         }
-        Thread.Sleep(50);
+        Thread.Sleep(100);
     }
 
-    Console.SetCursorPosition(0, currentRow);
+    Console.SetCursorPosition(2, currentRow);
     var msPerIteration = (decimal)stopwatch.ElapsedMilliseconds / totalIterations;
-    Console.Write(
-        $"  Time: {stopwatch.ElapsedMilliseconds}ms, Iteration Time: {msPerIteration:0.000000}ms, Errors: {totalErrors}");
+    Console.Write("Time: ");
+    Console.ForegroundColor = ConsoleColor.Magenta;
+    Console.Write($"{stopwatch.ElapsedMilliseconds:#,###}ms");
+    Console.ResetColor();
+    Console.Write(", Iteration Time: ");
+    Console.ForegroundColor = ConsoleColor.Magenta;
+    Console.Write($"{msPerIteration:0.000000}ms");
+    Console.ResetColor();
+    Console.Write(", Errors: ");
+    Console.ForegroundColor = totalErrors > 0 ? ConsoleColor.Red : ConsoleColor.Magenta;
+    Console.Write(totalErrors);
+    Console.ResetColor();
 
     for (var generation = 0; generation < lastValues.Length; generation++)
     {
