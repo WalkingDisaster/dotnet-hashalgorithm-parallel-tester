@@ -2,7 +2,7 @@
 
 Pretty much does what it says.
 
-Here's an example from my run results
+Here's an example from my run results. The "Gen{n}" columns represent the number of times that garbage collection ocurred in that generation for the test. 
 
 | Name                | TotalTimeInMilliseconds | IterationsRun | AverageMillisecondsPerRun | Gen0 | Gen1 | Gen2 |
 | ------------------- | ----------------------- | ------------- | ------------------------- | ---- | ---- | ---- |
