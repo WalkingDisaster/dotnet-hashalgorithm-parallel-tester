@@ -15,6 +15,7 @@ var runs = new ITestRun[]
     new SingletonInstance()
 };
 
+Console.Clear();
 Console.WriteLine("Concurrency Tester");
 Console.WriteLine($"Iterations: {totalIterations:0,000}, Degree of Parallelism: {degreeOfParallelism}");
 
